@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "358434023018",
+    "firebase_url": "https://orcafacil-45f2d.firebaseio.com",
+    "project_id": "orcafacil-45f2d",
+    "storage_bucket": "orcafacil-45f2d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:358434023018:android:df96c273015cfe98",
+        "android_client_info": {
+          "package_name": "com.example.ihc_g2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "358434023018-q4s9hnbto9otk9p24ebtr60i87c98ujq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC5dq4HIzlzZ7qmvN4T6pe_3hK2AgJ8jW4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "358434023018-q4s9hnbto9otk9p24ebtr60i87c98ujq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
