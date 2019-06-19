@@ -21,4 +21,14 @@ class ProductData{
     width = snapshot.data["width"] + 0.0;
   }
 
+  Map<String, dynamic> toResumedMap(){
+    return{
+      "title": title,
+      "type": type,
+      "material": material,
+      "height": height,
+      "width": width,
+    };
+  }
+
 }

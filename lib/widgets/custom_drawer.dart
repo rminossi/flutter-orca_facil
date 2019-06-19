@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:ihc_g2/models/user_model.dart';
+import 'package:ihc_g2/pages/login_page.dart';
 import 'package:ihc_g2/tiles/drawer_tile.dart';
+import 'package:scoped_model/scoped_model.dart';
 
 class CustomDrawer extends StatelessWidget {
 
@@ -47,32 +50,46 @@ class CustomDrawer extends StatelessWidget {
                   Positioned(
                     left: 0.0,
                     bottom: 0.0,
-                    child: Column(
+                    child: ScopedModelDescendant<UserModel>(
+                      builder: (context, child, model){
+                        return  Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        Text("Olá,",
+                        Text("Olá, ${!model.isLoggedIn() ? "" : model.userData["name"]}",
                           style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
                         ),
                         GestureDetector(
-                          child: Text("Entre ou cadastre-se >",
+                          child: Text(
+                            !model.isLoggedIn() ? 
+                            "Entre ou cadastre-se >"
+                            : "Sair",
                           style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold,
                            color: Theme.of(context).primaryColor),
                         ),
                         onTap: (){
-
+                          if(!model.isLoggedIn())
+                            Navigator.of(context).push(
+                              MaterialPageRoute(builder: (context)=>LoginPage())
+                            );
+                          else
+                            model.signOut();
+                            Navigator.of(context).pushReplacement(
+                              MaterialPageRoute(builder: (context)=>LoginPage())
+                            );
                         },
                         )
                       ],
-                    ),
+                    );
+                      },
+                    )
                   )
                 ],
                 ),
               ),
             Divider(),
-            DrawerTile(Icons.home, "Início", pageController, 0),
-            DrawerTile(Icons.list, "Orçamentos", pageController, 1),
-            DrawerTile(Icons.store, "Lojas", pageController, 2),
-            DrawerTile(Icons.account_circle, "Perfil", pageController, 3),
+            DrawerTile(Icons.home, "Orçamentos", pageController, 0),
+            DrawerTile(Icons.store, "Lojas", pageController, 1),
+            DrawerTile(Icons.account_circle, "Perfil", pageController, 2),
             ],
           )
         ],

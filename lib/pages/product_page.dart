@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:ihc_g2/datas/estimate_data.dart';
 import 'package:ihc_g2/datas/product_data.dart';
+import 'package:ihc_g2/models/estimate_model.dart';
 
 class ProductPage extends StatefulWidget {
 
@@ -12,7 +14,10 @@ class ProductPage extends StatefulWidget {
 }
 
 class _ProductPageState extends State<ProductPage> {
-  
+
+final _quantityController = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
+
 final ProductData product;
 
   _ProductPageState(this.product);
@@ -52,34 +57,20 @@ final ProductData product;
                   ),
                   maxLines: 3,
                 ),
-                SizedBox(height: 24.0,),
-                Text(
-                  "Quantidade",
-                  style: TextStyle(
-                    fontSize: 16.0,
-                    fontWeight: FontWeight.w500
-                  ),
-                ),
-                Container(
-                  width: 50,
-                  child: TextField(
-                    keyboardType: TextInputType.number,
-                    decoration: InputDecoration(
-                      contentPadding: EdgeInsets.only(
-                        left: 5,
-                        right: 5,
-                        bottom: 5,
-                        top: 5,
-                      ),
-                    ),
-                  ),
-                ),
                 SizedBox(height: 24),
                 SizedBox(
                   height: 44,
                   width: double.infinity,
                   child: RaisedButton(
-                    onPressed: (){},
+                    onPressed: (){
+                        Estimate estimate = Estimate();      
+                        estimate.pid = product.id;
+                        estimate.quantity = 1;
+                        estimate.category = product.category;
+                        estimate.productData = product;
+                        EstimateModel.of(context).addEstimateItem(estimate);
+                        
+                    },
                     child: Text("Adicionar ao Orçamento",
                       style: TextStyle(fontSize: 18)
                     ),

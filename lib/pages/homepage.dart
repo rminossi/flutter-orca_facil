@@ -3,6 +3,8 @@ import 'package:ihc_g2/pages/login_page.dart';
 import 'package:ihc_g2/tabs/categ_tab.dart';
 import 'package:ihc_g2/tabs/home_tab.dart';
 import 'package:ihc_g2/widgets/custom_drawer.dart';
+import 'package:ihc_g2/widgets/estimateAdd_button.dart';
+import 'package:ihc_g2/widgets/estimate_button.dart';
 
 class HomePage extends StatelessWidget {
   
@@ -17,6 +19,7 @@ final _pageController = PageController();
         Scaffold(
           body: HomeTab(),
           drawer: CustomDrawer(_pageController),
+          floatingActionButton: EstimateAddButton(),
         ),
         Scaffold(
           appBar: AppBar(

@@ -1,4 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:ihc_g2/models/user_model.dart';
+import 'package:ihc_g2/tiles/estimates_tale.dart';
+import 'package:path/path.dart';
 
 class HomeTab extends StatelessWidget {
   @override
@@ -26,10 +30,10 @@ class HomeTab extends StatelessWidget {
               backgroundColor: Colors.transparent,
               elevation: 0.0,
               flexibleSpace: FlexibleSpaceBar(
-                title: const Text("Dashboard"),
+                title: const Text("Meus Orçamentos"),
                 centerTitle: true,
               ),
-            )
+            ),
           ],
         )
       ],

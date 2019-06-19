@@ -21,6 +21,16 @@ class LoginBloc extends BlocBase with LoginValidators{
   Function(String) get changeEmail => _emailController.sink.add;
   Function(String) get changePassword => _passwordController.sink.add;
 
+  LoginBloc(){
+    FirebaseAuth.instance.onAuthStateChanged.listen((user){
+      if(user != null){
+        
+      }else{
+        _stateController.add(LoginState.IDLE);
+      }
+    });
+  }
+
   void submit(){
     final email = _emailController.value;
     final password = _passwordController.value;
