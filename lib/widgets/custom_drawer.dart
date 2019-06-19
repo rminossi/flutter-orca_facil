@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:ihc_g2/models/user_model.dart';
 import 'package:ihc_g2/pages/login_page.dart';
@@ -60,23 +61,16 @@ class CustomDrawer extends StatelessWidget {
                         ),
                         GestureDetector(
                           child: Text(
-                            !model.isLoggedIn() ? 
-                            "Entre ou cadastre-se >"
-                            : "Sair",
-                          style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold,
-                           color: Theme.of(context).primaryColor),
-                        ),
-                        onTap: (){
-                          if(!model.isLoggedIn())
-                            Navigator.of(context).push(
-                              MaterialPageRoute(builder: (context)=>LoginPage())
-                            );
-                          else
+                            "Sair",
+                            style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold,
+                            color: Theme.of(context).primaryColor),
+                          ),
+                          onTap: (){
                             model.signOut();
                             Navigator.of(context).pushReplacement(
-                              MaterialPageRoute(builder: (context)=>LoginPage())
+                            MaterialPageRoute(builder: (context)=>LoginPage())
                             );
-                        },
+                          },
                         )
                       ],
                     );
