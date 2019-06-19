@@ -9,6 +9,7 @@ class Estimate{
   String description;
   String category;
   String pid;
+  int status;
   int quantity;
   
 
@@ -19,6 +20,7 @@ class Estimate{
   Estimate.fromDocument(DocumentSnapshot document){
     eid = document.documentID;
     title = document.data["title"];
+    status = document.data["status"];
     description = document.data["description"];
     category = document.data["category"];
     quantity = document.data["quantity"];
@@ -32,6 +34,7 @@ class Estimate{
       "quantity": quantity,
       "description": description,
       "category": category,
+      "status": status,
       "product": productData.toResumedMap(),
     };
   }

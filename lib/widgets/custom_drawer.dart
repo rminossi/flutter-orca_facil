@@ -87,7 +87,7 @@ class CustomDrawer extends StatelessWidget {
                 ),
               ),
             Divider(),
-            DrawerTile(Icons.home, "Orçamentos", pageController, 0),
+            DrawerTile(Icons.attach_money, "Orçamentos", pageController, 0),
             DrawerTile(Icons.store, "Lojas", pageController, 1),
             DrawerTile(Icons.account_circle, "Perfil", pageController, 2),
             ],

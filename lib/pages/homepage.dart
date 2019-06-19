@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ihc_g2/pages/login_page.dart';
 import 'package:ihc_g2/tabs/categ_tab.dart';
+import 'package:ihc_g2/tabs/estimates_tab.dart';
 import 'package:ihc_g2/tabs/home_tab.dart';
 import 'package:ihc_g2/widgets/custom_drawer.dart';
 import 'package:ihc_g2/widgets/estimateAdd_button.dart';
@@ -17,13 +18,17 @@ final _pageController = PageController();
       physics: NeverScrollableScrollPhysics(),
       children: <Widget>[
         Scaffold(
-          body: HomeTab(),
+          appBar: AppBar(
+            title: Text("Meus Orçamentos"),
+            centerTitle: true,
+          ),
           drawer: CustomDrawer(_pageController),
+          body: EstimatesTab(),
           floatingActionButton: EstimateAddButton(),
         ),
         Scaffold(
           appBar: AppBar(
-            title: Text("Produtos"),
+            title: Text("Lojas"),
             centerTitle: true,
           ),
           drawer: CustomDrawer(_pageController),

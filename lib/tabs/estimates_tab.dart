@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:ihc_g2/models/user_model.dart';
-import 'package:ihc_g2/tiles/estimates_tale.dart';
+import 'package:ihc_g2/tiles/estimates_tile.dart';
 import 'package:path/path.dart';
 
 class EstimatesTab extends StatelessWidget {
@@ -21,8 +21,9 @@ class EstimatesTab extends StatelessWidget {
           );
         }else{
           return ListView(
+                padding: EdgeInsets.only(top: 20, bottom: 20),
             children: snapshot.data.documents.map((doc) => EstimatesTile(doc.documentID)).toList(),
-          );
+          );          
         }
       }      
     );

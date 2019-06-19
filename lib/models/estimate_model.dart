@@ -16,7 +16,7 @@ class EstimateModel extends Model {
   bool isLoading = false; 
 
   EstimateModel(this.user){
-  //  _loadUnsavedEstimate();
+    _loadUnsavedEstimate();
   }
 
   static EstimateModel of(BuildContext context) =>
@@ -62,7 +62,7 @@ class EstimateModel extends Model {
       notifyListeners();
   }
 
- /* void _loadUnsavedEstimate () async{
+  void _loadUnsavedEstimate () async{
 
     
     QuerySnapshot query = await 
@@ -77,7 +77,7 @@ class EstimateModel extends Model {
       notifyListeners();
 
   }
-*/
+
   void removeEstimateItem(Estimate estimate){  //remove produtos do novo orçamento
     Firestore.instance
       .collection("users")
@@ -91,7 +91,7 @@ class EstimateModel extends Model {
       notifyListeners();
   }
 
-  Future<String> saveEstimate() async{
+  Future<String> saveEstimate(String title, String description) async{
     if (products.length == 0) return null;
 
     isLoading = true;
@@ -101,9 +101,9 @@ class EstimateModel extends Model {
       {
         "clienteId": user.firebaseUser.uid,
         "products": products.map((estimate)=>estimate.toMap()).toList(),
-        "title": "Teste",
-        "description": "Clacular frete para xxxxxxxx",
-        "Status": 1
+        "title": title,
+        "description": description,
+        "status": 1
       }
     );
 
@@ -135,5 +135,4 @@ class EstimateModel extends Model {
 
   }
 
-  
 }

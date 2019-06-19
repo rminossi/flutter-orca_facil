@@ -15,6 +15,10 @@ class NewEstimatePage extends StatefulWidget {
 }
 
 class _NewEstimatePageState extends State<NewEstimatePage> {
+
+  final _titleController = TextEditingController();
+  final _descriptionController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -85,7 +89,22 @@ class _NewEstimatePageState extends State<NewEstimatePage> {
                         }
                       ).toList(),
                     ),
-                    EstimateInfos(),
+                    SizedBox(height: 12,),
+                    TextFormField(
+                      controller: _titleController,
+                      decoration: InputDecoration(
+                        border: UnderlineInputBorder(),
+                        hintText: "Título"
+                      ), 
+                    ),
+                    SizedBox(height:12),
+                    TextFormField(
+                      controller: _descriptionController,
+                      decoration: InputDecoration(
+                        border: UnderlineInputBorder(),
+                        hintText: "Observações"
+                      ),
+                    ),
                     SizedBox(height: 12),
                     SizedBox(
                         height: 50,
@@ -112,7 +131,10 @@ class _NewEstimatePageState extends State<NewEstimatePage> {
                           textColor: Colors.white,
                           disabledColor: Colors.yellow,
                           onPressed:() async{
-                            String estimateId = await model.saveEstimate();
+                            String estimateId = await model.saveEstimate(
+                              _titleController.text,
+                              _descriptionController.text
+                            );
                             if(estimateId != null){
                               Navigator.of(context).pushReplacement(
                                 MaterialPageRoute(builder: (context)=>HomePage())
